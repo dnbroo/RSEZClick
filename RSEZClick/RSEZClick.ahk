@@ -25,12 +25,12 @@ OnExit, ExitSub ; Run a subroutine or function automatically when the script exi
 ; =======================================================================================
 ButtonStart:
 	;MsgBox, , 4096, Click to set position click 1
-	Gui, Add, Text, x10 y95, Position 1
+	Gui, Add, Text, x10 y95, V Key
 	KeyWait, LButton, D
 	MouseGetPos, x1, y1
 	KeyWait, LButton, U
 	Gui, Add, Text, x120 y95, %x1% %y1% 
-	Gui, Add, Text, x10 y120, Position 2
+	Gui, Add, Text, x10 y120, B Key
 	KeyWait, LButton, D
 	MouseGetPos, x2, y2
 	KeyWait, LButton, U
@@ -71,7 +71,9 @@ vAction:
 		my1 := (y1 - rand)
 
 	}
-	MouseClick, L, mx1, my1, , 100
+	MouseClick, L, mx1, my1, , 100, D
+	sleep, rand * 10
+	MouseClick, L, mx1, my1, , 100, U
 	Return
 	
 bAction:
@@ -99,8 +101,9 @@ bAction:
 		my2 := (y2 - rand)
 
 	}
-	MouseClick, L, mx2, my2, , 100
-	;MsgBox, , 4096, %rand% %randX% %randY%
+	MouseClick, L, mx2, my2, , 100, D
+	sleep, rand * 10
+	MouseClick, L, mx2, my2, , 100, U
 	Return
 	
 ; MAIN GUI FUNCTIONS ====================================================================
